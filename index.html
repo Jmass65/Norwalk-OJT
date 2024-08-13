@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NH Security Academy Exam</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+            background-color: #f0f0f0; 
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Red_Cross.svg/1200px-Red_Cross.svg.png'); 
+            background-size: 100px 100px; 
+            background-repeat: no-repeat; 
+            background-position: center;
+        }
+        .test-container { 
+            max-width: 600px; 
+            margin: auto; 
+            padding: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 10px; 
+            background-color: #ffffff; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question { margin-bottom: 20px; }
+        .result { display: none; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>NH Security Academy Exam</h1>
+        <form id="test-form">
+            <div class="question">
+                <p>1. What is a code gray?</p>
+                <input type="radio" name="q1" value="Combative patient"> Combative patient<br>
+                <input type="radio" name="q1" value="Fire emergency"> Fire emergency<br>
+                <input type="radio" name="q1" value="Medical emergency"> Medical emergency<br>
+            </div>
+            <div class="question">
+                <p>2. What do you do when there is a rapid response near your post?</p>
+                <input type="radio" name="q2" value="Dial 55 inform operator of location"> Dial 55 inform operator of location<br>
+                <input type="radio" name="q2" value="Call 911"> Call 911<br>
+                <input type="radio" name="q2" value="Ignore it"> Ignore it<br>
+            </div>
+            <div class="question">
+                <p>3. What does the acronym PASS stand for?</p>
+                <input type="radio" name="q3" value="Pull, Aim, Squeeze, Sweep"> Pull, Aim, Squeeze, Sweep<br>
+                <input type="radio" name="q3" value="Push, Alert, Scream, Shout"> Push, Alert, Scream, Shout<br>
+                <input type="radio" name="q3" value="Pass, Aim, Shoot, Spray"> Pass, Aim, Shoot, Spray<br>
+            </div>
+            <button type="button" onclick="submitTest()">Submit</button>
+        </form>
+        <div class="result" id="result">
+            <h2>Test Result</h2>
+            <p id="score"></p>
+        </div>
+    </div>
+
+    <script>
+        function submitTest() {
+            const form = document.getElementById('test-form');
+            const result = document.getElementById('result');
+            const scoreElement = document.getElementById('score');
+            const formData = new FormData(form);
+
+            let score = 0;
+
+            if (formData.get('q1') === 'Combative patient') {
+                score += 1;
+            }
+            if (formData.get('q2') === 'Dial 55 inform operator of location') {
+                score += 1;
+            }
+            if (formData.get('q3') === 'Pull, Aim, Squeeze, Sweep') {
+                score += 1;
+            }
+
+            scoreElement.innerText = `Your score is: ${score} out of 3`;
+            result.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
